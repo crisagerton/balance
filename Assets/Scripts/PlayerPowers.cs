@@ -16,29 +16,49 @@ public class PlayerPowers : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        handleGlowGrowth();
+    }
+
+    void handleGlowGrowth()
+    {
+        #region Unused Distance Code
         /*
          * Concerning the below code:
          * This is for if I decide there should be a limit to how big the powers get
          * Otherwise the powers will grow based on the distance between them
          */
-        //if (!partnerInRange() && glow.transform.localScale.x < range)
+        //if (!partnerInRange(range) && glow.transform.localScale.x < range)
         //    glow.transform.localScale += new Vector3(1, 1, 0);
-        //else if (partnerInRange()) {
+        //else if (partnerInRange(range))
+        //{
         //    float distance = getDistanceFromPartner();
         //    glow.transform.localScale = new Vector3(distance, distance, 0);
         //}
+        #endregion
 
         float distance = getDistanceFromPartner();
         glow.transform.localScale = new Vector3(distance, distance, 0);
-
-
     }
 
-    bool partnerInRange()
+    public BoundsInt getBoundary()
+    {
+        Vector3 center = transform.position;
+        float radius = getDistanceFromPartner() / 2;
+
+        Vector3Int topCorner = new Vector3Int((int) (center.x + radius),
+            (int) (center.y + radius), (int) (center.z + radius));
+        Vector3Int bottomCorner = new Vector3Int((int)(center.x - radius),
+            (int)(center.y - radius), (int)(center.z - radius));
+
+        BoundsInt bi = new BoundsInt(topCorner, bottomCorner);
+        return bi;
+    }
+
+    bool partnerInRange(int targetRange)
     {
         float distance = getDistanceFromPartner();
 
-        return (distance <= range);
+        return (distance <= targetRange);
     }
 
     float getDistanceFromPartner()

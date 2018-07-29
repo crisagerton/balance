@@ -21,8 +21,13 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 movement = new Vector3(0,0,0);
-        float truespeed = (float) speed / 10;
+        Move();
+	}
+
+    void Move()
+    {
+        Vector3 movement = new Vector3(0, 0, 0);
+        float truespeed = (float)speed / 10;
         if (Input.GetKey(upKey))
             movement = new Vector3(0, truespeed, 0);
         if (Input.GetKey(downKey))
@@ -32,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKey(rightKey))
             movement = new Vector3(truespeed, 0, 0);
         gameObject.transform.Translate(movement);
-	}
+    }
 
     void setControls(bool isLeftSide)
     {
