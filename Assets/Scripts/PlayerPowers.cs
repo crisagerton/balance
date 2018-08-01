@@ -3,56 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPowers : MonoBehaviour {
+    /// <summary>
+    /// Helps control the extent of the player's powers (the glow)
+    /// Growth is based on the player's distance from their partner
+    /// </summary>
 
     public bool isHealer; //if true, has healing powers. if false, has destroying powers
     public GameObject glow;
     public GameObject partner;
 
     private int range = 5;
-
-	// Use this for initialization
-	void Start () {
-	}
 	
-	// Update is called once per frame
 	void Update () {
         handleGlowGrowth();
     }
 
     void handleGlowGrowth()
     {
-        #region Unused Distance Code
+        #region Distance Code - Limited Ver
         /*
          * Concerning the below code:
-         * This is for if I decide there should be a limit to how big the powers get
+         * Places a limit to how big the powers get
          * Otherwise the powers will grow based on the distance between them
          */
-        //if (!partnerInRange(range) && glow.transform.localScale.x < range)
-        //    glow.transform.localScale += new Vector3(1, 1, 0);
-        //else if (partnerInRange(range))
-        //{
-        //    float distance = getDistanceFromPartner();
-        //    glow.transform.localScale = new Vector3(distance, distance, 0);
-        //}
+        if (!partnerInRange(range) && glow.transform.localScale.x < range)
+            glow.transform.localScale += new Vector3(1, 1, 0);
+        else if (partnerInRange(range))
+        {
+            float distance = getDistanceFromPartner();
+            glow.transform.localScale = new Vector3(distance, distance, 0);
+        }
         #endregion
 
-        float distance = getDistanceFromPartner();
-        glow.transform.localScale = new Vector3(distance, distance, 0);
+        #region Distance Code - Unlimited Ver
+        /*
+         * Concerning the below code:
+         * Does not place alimit to how big the powers can get
+         * Results in powers that always cover the distance between players
+         */
+        //float distance = getDistanceFromPartner();
+        //glow.transform.localScale = new Vector3(distance, distance, 0);
+        #endregion
     }
 
-    public BoundsInt getBoundary()
-    {
-        Vector3 center = transform.position;
-        float radius = getDistanceFromPartner() / 2;
-
-        Vector3Int topCorner = new Vector3Int((int) (center.x + radius),
-            (int) (center.y + radius), (int) (center.z + radius));
-        Vector3Int bottomCorner = new Vector3Int((int)(center.x - radius),
-            (int)(center.y - radius), (int)(center.z - radius));
-
-        BoundsInt bi = new BoundsInt(topCorner, bottomCorner);
-        return bi;
-    }
 
     bool partnerInRange(int targetRange)
     {

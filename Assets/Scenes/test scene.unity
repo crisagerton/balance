@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 48814016}
   - component: {fileID: 48814017}
   - component: {fileID: 48814018}
+  - component: {fileID: 48814019}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -3431,7 +3432,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
 --- !u!114 &48814017
 MonoBehaviour:
@@ -3444,6 +3445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7bebc8382e5fe47b5dfb2b6c8b0b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healerGlow: {fileID: 2012058173}
+  destroyerGlow: {fileID: 689432294}
   alive: {fileID: 11400000, guid: 3b5b4575cc79d17428bb5dfeb437534e, type: 2}
   dead: {fileID: 11400000, guid: 6b0e2d14c6097614ab069cdcdb998931, type: 2}
   tileMap: {fileID: 48814015}
@@ -3467,6 +3470,88 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!66 &48814019
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 48814012}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 48814016}
+    m_ColliderPaths:
+    - - X: -71000000
+        Y: -9000000
+      - X: -55000000
+        Y: -9000000
+      - X: -55000000
+        Y: -999999
+      - X: -31000000
+        Y: -999999
+      - X: -31000000
+        Y: 7000000
+      - X: 31000002
+        Y: 7000000
+      - X: 31000002
+        Y: -999999
+      - X: 55000000
+        Y: -999999
+      - X: 55000000
+        Y: -9000000
+      - X: 71000000
+        Y: -9000000
+      - X: 71000000
+        Y: -17000000
+      - X: 95000000
+        Y: -17000000
+      - X: 95000000
+        Y: -25000000
+      - X: 105000000
+        Y: -25000000
+      - X: 105000000
+        Y: 105000000
+      - X: -105000008
+        Y: 105000000
+      - X: -105000008
+        Y: -25000000
+      - X: -95000008
+        Y: -25000000
+      - X: -95000008
+        Y: -17000000
+      - X: -71000000
+        Y: -17000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -9.500001, y: -1.7}
+      - {x: -7.1, y: -1.7}
+      - {x: -7.1, y: -0.90000004}
+      - {x: -5.5, y: -0.90000004}
+      - {x: -5.5, y: -0.099999905}
+      - {x: -3.1000001, y: -0.099999905}
+      - {x: -3.1000001, y: 0.7}
+      - {x: 3.1000001, y: 0.7}
+      - {x: 3.1000001, y: -0.099999905}
+      - {x: 5.5, y: -0.099999905}
+      - {x: 5.5, y: -0.90000004}
+      - {x: 7.1, y: -0.90000004}
+      - {x: 7.1, y: -1.7}
+      - {x: 9.5, y: -1.7}
+      - {x: 9.5, y: -2.5}
+      - {x: 10.5, y: -2.5}
+      - {x: 10.5, y: 10.5}
+      - {x: -10.500001, y: 10.5}
+      - {x: -10.500001, y: -2.5}
+      - {x: -9.500001, y: -2.5}
+  m_VertexDistance: 0.0005
 --- !u!1 &70044310
 GameObject:
   m_ObjectHideFlags: 0

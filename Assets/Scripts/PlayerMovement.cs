@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+    /// <summary>
+    /// Player movement for Local Multiplayer
+    /// </summary>
 
-    public bool isLeft;
+    public bool isLeft; //determines controls
     public int speed;
 
     private KeyCode upKey;
@@ -12,14 +15,11 @@ public class PlayerMovement : MonoBehaviour {
     private KeyCode leftKey;
     private KeyCode rightKey;
 
-	// Use this for initialization
 	void Start () {
         setControls(isLeft); 
-        //true = left side, makes controls WASD
-        //false = right side, makes controls arrow keys
+        
 	}
 	
-	// Update is called once per frame
 	void Update () {
         Move();
 	}
@@ -41,6 +41,11 @@ public class PlayerMovement : MonoBehaviour {
 
     void setControls(bool isLeftSide)
     {
+        /// <summary>
+        /// isLeftSide == true : left side, makes controls WASD
+        /// isLeftSide == false : right side, makes controls arrow keys
+        /// </summary>
+
         if (isLeftSide)
         {
             upKey = KeyCode.W;

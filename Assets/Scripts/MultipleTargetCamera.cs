@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class MultipleTargetCamera : MonoBehaviour {
-    /*
-     * Script based on the one written in this video
-     * https://www.youtube.com/watch?v=aLpixrPvlB8
-     */
+public class MultipleTargetCamera : MonoBehaviour
+{
+    /// <summary>
+    /// Allows the camera to follow multiple players at once,
+    /// but does not restrict them to the camera space
+    /// 
+    /// Script based on the one written in this video
+    /// https://www.youtube.com/watch?v=aLpixrPvlB8
+    /// </summary>
 
     public List<Transform> targets;
 
