@@ -3897,6 +3897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeft: 1
   speed: 1
+  cam: {fileID: 519420031}
 --- !u!58 &1187180396
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12241,6 +12242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLeft: 0
   speed: 1
+  cam: {fileID: 519420031}
 --- !u!58 &1859980356
 CircleCollider2D:
   m_ObjectHideFlags: 0
