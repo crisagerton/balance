@@ -3947,6 +3947,8 @@ MonoBehaviour:
   isHealer: 0
   glow: {fileID: 2012058173}
   partner: {fileID: 1859980352}
+  limit: 5
+  power: 3
 --- !u!1 &1742366587
 GameObject:
   m_ObjectHideFlags: 0
@@ -12292,6 +12294,8 @@ MonoBehaviour:
   isHealer: 0
   glow: {fileID: 689432294}
   partner: {fileID: 1187180392}
+  limit: 5
+  power: 3
 --- !u!1 &2001586627
 GameObject:
   m_ObjectHideFlags: 0
