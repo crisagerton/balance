@@ -38,15 +38,21 @@ public class TileChange : MonoBehaviour {
 
     private void changeTiles(Tile newTile, GameObject glow)
     {
-        Bounds glowBounds = glow.GetComponent<CircleCollider2D>().bounds;
-
         foreach (Vector3 position in tilePositionsInWorld)
         {
-            if (!glowBounds.Contains(position))
+            if (!positionInGlowBounds(position, glow))
                 continue;
             Vector3Int mapPosition = tileMap.WorldToCell(position);
             tileMap.SetTile(mapPosition, newTile);
         }
+    }
+
+    private bool positionInGlowBounds(Vector3 position, GameObject glow)
+    {
+        Bounds glowBounds = glow.GetComponent<CircleCollider2D>().bounds;
+        return glowBounds.max.x >= position.x && glowBounds.max.y >= position.y
+            && glowBounds.min.x <= position.x && glowBounds.min.y <= position.y;
+
     }
 
     private void fillPositionsList()
@@ -58,11 +64,11 @@ public class TileChange : MonoBehaviour {
         */
         #endregion
 
-        for (int r = tileMap.cellBounds.xMin; r < tileMap.cellBounds.xMax; r++)
+        for (int c = tileMap.cellBounds.xMin; c < tileMap.cellBounds.xMax; c++)
         {
-            for (int c = tileMap.cellBounds.yMin; c < tileMap.cellBounds.yMax; c++)
+            for (int r = tileMap.cellBounds.yMin; r < tileMap.cellBounds.yMax; r++)
             {
-                Vector3Int localPlace = (new Vector3Int(r, c, (int)tileMap.transform.position.y));
+                Vector3Int localPlace = (new Vector3Int(c, r, (int)tileMap.transform.position.z));
                 Vector3 position = tileMap.CellToWorld(localPlace);
                 if (tileMap.HasTile(localPlace))
                 {
