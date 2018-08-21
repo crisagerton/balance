@@ -23,14 +23,24 @@ public class WallButton : MonoBehaviour {
     {
         if (collision != player.GetComponent<Collider2D>())
             return;
-        GetComponent<SpriteRenderer>().color = activationColor;
-        wall.SetActive(false);
+        Activate();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision != player.GetComponent<Collider2D>())
             return;
+        Deactivate();
+    }
+
+    protected void Activate()
+    {
+        GetComponent<SpriteRenderer>().color = activationColor;
+        wall.SetActive(false);
+    }
+
+    protected void Deactivate()
+    {
         GetComponent<SpriteRenderer>().color = deactivationColor;
         wall.SetActive(true);
     }

@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\SelectiveEntry.cs" />
     <Compile Include="Assets\Scripts\TileChange.cs" />
     <Compile Include="Assets\Scripts\WallButton.cs" />
+    <Compile Include="Assets\Scripts\WallDualSwitch.cs" />
+    <Compile Include="Assets\Scripts\WallSwitch.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/pruss/Documents/Balance/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
