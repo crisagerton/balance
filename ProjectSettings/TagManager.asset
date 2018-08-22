@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Healer
   - Destroyer
+  - Portal
   layers:
   - Default
   - TransparentFX

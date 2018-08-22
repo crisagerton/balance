@@ -61,14 +61,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Buttons and Switches\Portal.cs" />
+    <Compile Include="Assets\Scripts\Buttons and Switches\WallButton.cs" />
+    <Compile Include="Assets\Scripts\Buttons and Switches\WallDualSwitch.cs" />
+    <Compile Include="Assets\Scripts\Buttons and Switches\WallSwitch.cs" />
     <Compile Include="Assets\Scripts\MultipleTargetCamera.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerPowers.cs" />
     <Compile Include="Assets\Scripts\SelectiveEntry.cs" />
     <Compile Include="Assets\Scripts\TileChange.cs" />
-    <Compile Include="Assets\Scripts\WallButton.cs" />
-    <Compile Include="Assets\Scripts\WallDualSwitch.cs" />
-    <Compile Include="Assets\Scripts\WallSwitch.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/pruss/Documents/Balance/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
