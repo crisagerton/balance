@@ -18,8 +18,6 @@ public class Portal : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log("Player Ready: " + playersReady);
-        Debug.Log("activated: " + Input.GetKey(activationKey));
         if (playersReady && Input.GetKey(activationKey))
         {
             SceneManager.LoadScene(sceneName);
