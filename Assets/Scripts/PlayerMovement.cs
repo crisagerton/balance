@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         /// Restricted movement
         Vector3 movement = getMovement();
-        if (inCamBounds(transform.position))
+        if (inCamBounds(transform.position + movement))
             gameObject.transform.Translate(movement);
     }
 
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         ///Checks to see if CIRCLE is fully in bounds
         ///hence why the z can be 0
-        return inCamBounds(new Vector3(center.x + radius, center.y + radius, 0)) &&
+        return inCamBounds(new Vector3(center.x + radius, center.y + radius, 0)) ||
             inCamBounds(new Vector3(center.x + radius, center.y + radius, 0));
     }
 

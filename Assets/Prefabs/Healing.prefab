@@ -157,10 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137ee16f601833a48ac065e84bb653ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHealer: 0
+  isHealer: 1
   glow: {fileID: 1849226339417250}
   partner: {fileID: 0}
   limit: 5
+  multiplier: 1
   power: 3
 --- !u!114 &114425519830878950
 MonoBehaviour:

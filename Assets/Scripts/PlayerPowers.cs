@@ -12,7 +12,8 @@ public class PlayerPowers : MonoBehaviour {
     public GameObject glow;
     public GameObject partner;
 
-    public int limit = 5;
+    public float limit = 5;
+    public float multiplier = 1;
     public powerType power;
 
 
@@ -93,20 +94,20 @@ public class PlayerPowers : MonoBehaviour {
 
         if (partnerInRange(limit))
         {
-            glow.transform.localScale = new Vector3(distance, distance, 0);
+            glow.transform.localScale = new Vector3(distance, distance, 0) * multiplier;
         }
         else
         {
             float diff = 0;
             if (distance - limit <= limit - diff)
                 diff = limit - (distance - limit);
-            glow.transform.localScale = new Vector3(diff, diff, 0);
+            glow.transform.localScale = new Vector3(diff, diff, 0) * multiplier;
         }
     }
     #endregion
 
     #region Helper Functions
-    bool partnerInRange(int targetRange)
+    bool partnerInRange(float targetRange)
     {
         float distance = getDistanceFromPartner();
 
