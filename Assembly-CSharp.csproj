@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\Buttons and Switches\WallButton.cs" />
     <Compile Include="Assets\Scripts\Buttons and Switches\WallDualSwitch.cs" />
     <Compile Include="Assets\Scripts\Buttons and Switches\WallSwitch.cs" />
+    <Compile Include="Assets\Scripts\GameState.cs" />
+    <Compile Include="Assets\Scripts\GameStateText.cs" />
     <Compile Include="Assets\Scripts\MultipleTargetCamera.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerPowers.cs" />

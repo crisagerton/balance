@@ -21,7 +21,30 @@ public class TileChange : MonoBehaviour {
 
     private List<Vector3> tilePositionsInWorld;
 
-    private void Start()
+    #region Public Functions
+    public int getSizeTilePositions()
+    {
+        return tilePositionsInWorld.Count;
+    }
+
+    public List<Vector3> getTilePositionsInWorld()
+    {
+        return tilePositionsInWorld;
+    }
+
+    public int getNumAlive()
+    {
+        return getNumTile(alive);
+    }
+
+    public int getNumDead()
+    {
+        return getNumTile(dead);
+    }
+
+    #endregion
+
+    private void Awake()
     {
         tileMap = GetComponent<Tilemap>();
         tilePositionsInWorld = new List<Vector3>();
@@ -35,6 +58,17 @@ public class TileChange : MonoBehaviour {
         changeTiles(dead, destroyerGlow);
     }
 
+    private int getNumTile(Tile tile)
+    {
+        int total = 0;
+        foreach (Vector3 position in tilePositionsInWorld)
+        {
+            Vector3Int mapPosition = tileMap.WorldToCell(position);
+            if (tileMap.GetTile(mapPosition) == tile)
+                total++;
+        }
+        return total;
+    }
 
     private void changeTiles(Tile newTile, GameObject glow)
     {
