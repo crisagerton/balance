@@ -15,6 +15,9 @@ public class WallButton : MonoBehaviour {
     public GameObject wall;
     public GameObject player;
 
+    public AudioSource buttonsfx;
+    public AudioSource wallsfx;
+
 	void Start () {
         GetComponent<SpriteRenderer>().color = deactivationColor;
     }
@@ -24,6 +27,7 @@ public class WallButton : MonoBehaviour {
         if (collision != player.GetComponent<Collider2D>())
             return;
         Activate();
+        playSFX();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -31,6 +35,7 @@ public class WallButton : MonoBehaviour {
         if (collision != player.GetComponent<Collider2D>())
             return;
         Deactivate();
+        playSFX();
     }
 
     protected void Activate()
@@ -43,5 +48,13 @@ public class WallButton : MonoBehaviour {
     {
         GetComponent<SpriteRenderer>().color = deactivationColor;
         wall.SetActive(true);
+    }
+
+    protected void playSFX()
+    {
+        if (buttonsfx)
+            buttonsfx.Play();
+        if (wallsfx)
+            wallsfx.Play();
     }
 }

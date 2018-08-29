@@ -18,6 +18,7 @@ public class WallDualSwitch : WallButton {
         {
             Activate();
             otherButton.GetComponent<WallDualSwitch>().Activate();
+            playSFX();
         }
         else
             Deactivate();
