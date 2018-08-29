@@ -38,12 +38,19 @@ public class Portal : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         playersReady = false;
+        hideInstructions();
     }
 
     private void showInstructions()
     {
         if (instructions)
             instructions.gameObject.SetActive(true);
+    }
+
+    private void hideInstructions()
+    {
+        if (instructions)
+            instructions.gameObject.SetActive(false);
     }
 
 
