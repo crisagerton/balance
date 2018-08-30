@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Buttons and Switches\PanelActivation.cs" />
     <Compile Include="Assets\Scripts\Buttons and Switches\Portal.cs" />
     <Compile Include="Assets\Scripts\Buttons and Switches\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Buttons and Switches\WallButton.cs" />
