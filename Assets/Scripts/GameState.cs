@@ -15,21 +15,9 @@ public class GameState : MonoBehaviour {
 
     private List<TileChange> tileChanges = new List<TileChange>();
 
-    public float getPercentAlive()
-    {
-        if (totalChangableTiles != 0)
-            return (float) totalAlive / (float) totalChangableTiles * 100;
-        return 0;
-    }
-
-    public float getPercentDead()
-    {
-        if (totalChangableTiles != 0)
-            return (float) totalDead / (float) totalChangableTiles * 100;
-        return 0;
-    }
-
 	void Start () {
+        if (GameObject.FindGameObjectsWithTag("GameState").Length > 1)
+            Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);
         OnLevelWasLoaded(0);
 	}
@@ -42,10 +30,29 @@ public class GameState : MonoBehaviour {
     {
         ///Sets up the necessary tile information for this level
 
+        if (level == 0)
+            resetGameState();
+
         handlePreviousSceneTotals();
         clearCurrentVars();
         setCurrentVars();
     }
+
+    #region Public Functions
+    public float getPercentAlive()
+    {
+        if (totalChangableTiles != 0)
+            return (float)totalAlive / (float)totalChangableTiles * 100;
+        return 0;
+    }
+
+    public float getPercentDead()
+    {
+        if (totalChangableTiles != 0)
+            return (float)totalDead / (float)totalChangableTiles * 100;
+        return 0;
+    }
+    #endregion
 
 
     #region Helper Functions
@@ -86,6 +93,17 @@ public class GameState : MonoBehaviour {
             numCurrentAlive = tileChange.getNumAlive();
             numCurrentDead = tileChange.getNumDead();
         }
+    }
+
+    private void resetGameState()
+    {
+        totalChangableTiles = 0;
+        totalDead = 0;
+        totalAlive = 0;
+
+        numCurrentLevelTiles = 0;
+        numCurrentAlive = 0;
+        numCurrentDead = 0;
     }
     #endregion
 }
