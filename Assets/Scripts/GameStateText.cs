@@ -45,7 +45,7 @@ public class GameStateText : MonoBehaviour {
 
         if (alivePercent == 100)
             changeTextAndColor("ONLY LIFE", Color.white);
-        else if (alivePercent == 0)
+        else if (alivePercent >= 0 && alivePercent < 1)
             changeTextAndColor("ONLY DEATH", Color.black);
         else if (alivePercent == 50)
             changeTextAndColor("PERFECT BALANCE", Color.green);
