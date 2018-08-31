@@ -9,8 +9,10 @@ public class PanelActivation : MonoBehaviour {
 
     public List<GameObject> players;
     public KeyCode activationKey;
+    public Text instructions; //This isn't necessary, but is good for tutorial levels
 
     private bool playersReady = false;
+    private List<Collider2D> playersColliding = new List<Collider2D>();
 
     // Use this for initialization
     void Start () {
@@ -34,17 +36,24 @@ public class PanelActivation : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (GameObject player in players)
-        {
-            if (collision.gameObject != player)
-                return;
-            playersReady = true;
-        }
+        if (!checkColliderIsPlayer(collision))
+            return;
+
+        playersColliding.Add(collision);
+
+        if (players.Count != playersColliding.Count)
+            return;
+        showInstructions();
+        playersReady = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!playersColliding.Contains(collision))
+            return;
+        playersColliding.Remove(collision);
         playersReady = false;
+        hideInstructions();
     }
 
     private void showPanel()
@@ -53,6 +62,7 @@ public class PanelActivation : MonoBehaviour {
         panel.SetActive(true);
         foreach (GameObject player in players)
             player.SetActive(false);
+        hideInstructions();
     }
 
     private void hidePanel()
@@ -61,5 +71,30 @@ public class PanelActivation : MonoBehaviour {
         panel.SetActive(false);
         foreach (GameObject player in players)
             player.SetActive(true);
+        showInstructions();
+    }
+
+    private bool checkColliderIsPlayer(Collider2D collision)
+    {
+        bool playerConfirmed = false;
+        foreach (GameObject player in players)
+            if (player.GetComponent<Collider2D>() == collision)
+            {
+                playerConfirmed = true;
+                break;
+            }
+        return playerConfirmed;
+    }
+
+    private void showInstructions()
+    {
+        if (instructions)
+            instructions.gameObject.SetActive(true);
+    }
+
+    private void hideInstructions()
+    {
+        if (instructions)
+            instructions.gameObject.SetActive(false);
     }
 }
